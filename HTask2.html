@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dev</title>
+   <script defer src="script.js"></script>
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+<p>Welcome</p>
+
+
+<script>
+
+    //bubble sort
+    var mas = [9,82,72,611,5,4,3,2,2,1,-7,-5,-66];
+    var temp;
+    for (var i = 0; i < mas.length; i++)
+    {
+        for (var j = i + 1; j < mas.length; j++)
+        {
+            if (mas[i] > mas[j])
+            {
+                temp = mas[i];
+                mas[i] = mas[j];
+                mas[j] = temp;
+            }
+        }
+    }
+   console.log(mas);
+
+
+
+
+
+    //all word without number
+   var str = "Misha32misha";
+   for(var i = 0; i < str.length; i++){
+       var count = 0;
+       if(isNaN(str[i])){
+           count++;
+           console.log(count);
+       }
+   }
+
+
+   //find B amount
+   function countBs(str){
+       var count = 0;
+       for(var i = 0; i < str.length; i++){
+           if(str.charAt(i) == 'B'){
+               count++;
+           }
+       }
+       return count;
+   }
+   console.log(countBs("Big1Boss"));
+
+
+    function countChar(str,value){
+    var count = 0;
+        for(var i = 0; i < str.length; i++) {
+            if (str[i] == value) {
+                count++;
+            }
+        }
+        return count;
+    }
+    console.log(countChar("misha21misha",'m'));
+
+    //sum of arr
+    var arr = [11, 12, [3, [3, 6, [4, 7], 4], 5, 6], 7, 8];
+    var sum = 0;
+    for (i = 0; i < arr.length; i++){
+        if (arr[i].length > 1){
+            for (j = 0; j < arr[i].length; j++){
+                if (arr[i][j].length > 1){
+                    for (k = 0; k < arr[i][j].length; k++){
+                        if (arr[i][j][k].length > 1){
+                            for (t = 0; t < arr[i][j][k].length; t++){
+                                sum += arr[i][j][k][t];
+                            }
+                        }
+                        else{
+                            sum += arr[i][j][k];
+                        }
+                    }
+                }
+                else{
+                    sum += arr[i][j];
+                }
+            }
+        }
+        else{
+            sum += arr[i];
+        }
+    }
+    console.log(sum);
+
+
+
+
+
+</script>
+</body>
+</html>

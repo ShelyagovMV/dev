@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn String</title>
+   <script defer src="script.js"></script>
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+<p>Welcome</p>
+
+
+<script>
+
+//учим строки charAt,endsWith, includes,match,repeat,startsWith
+
+
+    var o =new Object();
+    var obj = {
+        name:'mikl',
+        lastname:'Doe',
+        age:20,
+        visited:["LA","idfsa","ds"],
+        city:'NYY'
+    }
+
+    o.role='USER';
+    obj.role='user';
+    obj.city='kiev';
+
+    console.log(obj.visited);
+    console.log(obj['visited']);
+    console.log(o['role'])
+
+    for(var property in obj){
+
+       console.log("false");
+    }
+
+    var a=6;
+    var b=7;
+    var c =a>b?a:b;
+
+    var user=obj;
+    obj.name="vasya";
+console.log(obj.name);
+console.log(user['name']);
+
+var user1={}
+for(var property in obj){
+
+    user1[property]=obj[property];
+}
+console.log(user);
+
+var user={};
+user.name='Vasya';
+user.surname='Petrov';
+user.surname='petrov';
+user.name='Sergey';
+delete user.name;
+console.log(user)
+
+    var lang ={
+        ru:["зеленый","красный","голубой"],
+        en:['green',"red","blue"]
+
+    }
+
+    var str1=['','',''];
+
+    for (var key in lang){
+        for(var i =0;i<=key.length;i++){
+            str1[i]+=lang[key][i];
+            if(key == 'ru'){
+               str1[i]+=":";
+            }
+        }
+    }
+
+    for(var j =0;j<str1.length;j++){
+            console.log(str1[j]);
+    }
+
+
+
+
+
+</script>
+</body>
+</html>

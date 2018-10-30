@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn function</title>
+   <script defer src="script.js"></script>
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+<p>Welcome</p>
+
+
+<script>
+
+
+
+
+//function
+
+
+    function sayHello(){
+        if(arguments.length == 1){
+              console.log("Hello " + arguments[0]);
+        }
+        if(arguments.length == 2){
+            console.log("Hello " + arguments[0] + " " + arguments[1]);
+        }
+        else if(arguments.length == 3){
+            console.log("Hello " + arguments[2] + " " + arguments[0] + " " + arguments[1]);
+        }
+        else{
+            var arr = [];
+            for(var i = 0; i < arguments.length; i++){
+                arr.push(arguments[i]);
+            }
+            console.log(arr);
+
+        }
+    }
+    sayHello('John');
+    sayHello('John', 'Doe');
+    sayHello('John', 'Doe', 'Hello');
+    sayHello('John', 'Doe', 'Hello','mikl','jbnk');
+
+
+
+    var a = 5;
+    function foo(){//function declaration
+        var a = 10;
+        if(3){
+           var  a = 15;
+           console.log(a);
+        }
+    }
+    foo();
+
+
+    var  boo =  function(){//named function expression
+        var a = 12;
+        var b = a;
+        console.log(b);
+    }
+    boo();
+
+    (function(){
+        console.log("anon");
+    })();
+
+
+     setTimeout(function(){
+         console.log("callback");
+     },1000);
+
+    setInterval(function(){
+    console.log("callback");
+    },1000);
+
+    function rec(num){
+    console.log(num);
+        if(num > 0){
+        num--;
+         rec(num);
+        }
+    }
+    rec(5);
+
+    function sum(a, b){
+        return a + b;
+    }
+    console.log(sum(6,6));
+
+
+    var arr = [10,11,231,9,8,7,6,5,4,3,2,1];
+    function reverse(arr){
+        var arr2=[];
+         for ( var i=arr.length-1;i>=0;i--){
+            arr2[arr.length-i-1]=arr[i];
+        }
+        return arr2;
+    }
+    console.log(reverse(arr));
+
+
+    function reverse2(arr){
+        var size =arr.length%2==0?arr.length/2:(arr.length-1)/2;
+        var el;
+        for(var i = 0; i < size; i++){
+            el = arr[i];
+            arr[i]=arr[arr.length-i-1];
+            arr[arr.length-i-1]=el;
+        }
+        return arr;
+    }
+    console.log(reverse2(arr));
+
+    function reverse3(a){
+      var a2 =[];
+      for(var i = a.length; i > 0; i--){
+          a2.push(a[a.length-1]);
+            a.pop();
+    }
+        return a2;
+    }
+    console.log(reverse3(arr));
+
+
+
+
+    function calc(str){
+        var expr = prompt("Imput a [+-*/]b some",);//4+7
+        var e2 =  expr.split(" ");
+
+        var n1 = +e2[0];
+        var n2 = +e2[2];
+        var sym = e2[1];
+
+        var res = 0;
+
+        function sum(a, b){
+             res =a+b;
+        }
+
+        function divide(a, b){
+             res =a/b;
+        }
+
+        function multiply(a, b){
+             res=a*b;
+        }
+
+        function diff(a, b){
+             res=a-b;
+        }
+
+        switch(sym){
+            case '+' :  sum(n1, n2);break;
+            case '/' :  divide(n1, n2);break;
+            case '*' :  multiply(n1, n2);break;
+            case '-' :  diff(n1, n2);break;
+            default: console.log("can't count");
+        }
+     return res;
+     }
+    console.log(calc());
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn function</title>
+   <script defer src="script.js"></script>
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+<p>Welcome</p>
+
+
+<script>
+
+
+
+    var str = "border-left-width";
+    var arr = str.split('-');
+    for(var i = 0; i < arr.length; i++){
+        arr[i] = arr[i].slice(0, 1).toUpperCase() + arr[i].slice(1);
+    }
+    var result = arr.join('');
+    alert(result);
+
+    var lang = {
+        ru: ['зеленый', "красный", "голубой"],
+        en: ['green', 'red', 'blue'],
+    }
+
+    /*for(var n = 0; n < lang.ru.length; n++){
+      console.log(lang.ru[n] + ': ' + lang.en[n]);
+    }
+    */
+
+    var lang_keys = []
+    for(var prop in lang){
+        lang_keys.push(prop);
+    }
+    for(var i=0; i<lang[lang_keys[0]].length; i++){
+        var arr_message=[];
+        for(var j=0; j<lang_keys.length; j++){
+            arr_message.push(lang[lang_keys[j]][i]);
+        }
+        console.log(arr_message.join(' : '));
+    }
+
+
+    var file = prompt('Загрузите файл', 'photo.jpg');
+    var type = file.split('.');
+    var type1 = type[1];
+
+    if (type1 == 'jpg'||type1 =='png'||type1 =='jpeg')
+        alert(true);
+    else
+        alert(false);
+    
+
+
+    var file = prompt('Загрузите файл', 'photo.jpg');
+
+    if (file.endsWith('jpg')||file.endsWith('png')||file.endsWith('jpeg'))
+        alert(true);
+    else
+        alert(false);
+
+
+</script>
+</body>
+</html>

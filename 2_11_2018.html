@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Learn closure</title>
+   <script defer src="script.js"></script>
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+<h1>Welcome</h1>
+
+<script>
+
+//сортировка свойст обьктов
+/*  var arr =[
+            {name:"Mikl", age:12},
+              {name:"dasd", age:22},
+              {name:"sad", age:1212}
+           ];
+  function sorting(key,array){
+      var arr = array.slice();
+      arr.sort(function(a, b){
+         if(a[key] > b[key]){
+             return 1;
+         }
+         else if(a[key] < b[key]){
+             return -1;
+         }
+         else {
+             return 0;
+         }
+      });
+      return arr;
+  }
+  console.log(sorting('age', arr));*/
+
+
+
+//  var arr =[1,2,3,4];
+//  var arr2=[4,7,2];
+//  function typeArray(array){
+//      var a =array.slice();
+//      console.log(a[0]);
+//      if(a.length>1){
+//          a.shift();
+//          typeArray(a)
+//      }
+//     }
+// typeArray(arr);
+//  console.log('------');
+// typeArray(arr2);
+
+//sum from diapazon
+//     var sum = 0;
+//         function sumRange(start,end){
+//             if(start<=end){
+//                 sum+=start;
+//                 start++;
+//                 sumRange(start,end);
+//            }
+//            return sum;
+//         }
+//         console.log(sumRange(3,8));
+//
+//         function s2(a,b){
+//             if (b>a){
+//                 return b+s2(a,b-1);
+//             }
+//             return b;
+//         }
+//         console.log(s2(3,8));
+
+
+// //closure
+// if('a' in window){
+//     var a = 15
+//      a =115;
+// }
+// console.log(a);
+
+       //  function gen(){
+       //      var arr =[];
+       //
+       //       function f1(){
+       //          var newnum = Math.floor(Math.random()* 100 + 1);
+       //          console.log(newnum);
+       //          if(arr.indexOf(newnum) == -1){
+       //              arr.push(newnum);
+       //
+       //          }
+       //          else {
+       //              f1();
+       //          }
+       //
+       //      }
+       //      return f1;
+       //  }
+       //
+       //  var randomiser = gen();
+       // for(var i = 0;i<100;i++){
+       //     randomiser();
+       // }
+
+
+
+       var arr = ['gree','red','fe','bkqcj'];
+
+
+       function showColor(){
+           var count=0;
+          return function() {
+              console.log(arr[count])
+;              if (count < arr.length){
+                  count++;
+              }
+              else{
+                count =0;
+              }
+          }
+       }
+
+var f1 = showColor();
+f1();
+f1();
+f1();
+
+    </script>
+</body>
+</html>

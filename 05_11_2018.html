@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Call() Apply() Bind()</title>
+   <script defer src="script.js"></script>
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+<h1>Welcome Call() Apply() Bind()
+Дескрипторы геттеры сеттеры</h1>
+
+<script>
+
+//the sum of arguments
+// function sumArgs(){
+//     var reduce =[].reduce;
+//     var res = reduce.call(arguments,function(total, num){
+//         return total+num;
+//     });
+//     return res;
+// }
+// alert(sumArgs(1,2,3));
+
+
+
+//передача аргументов и операции с нними
+/*
+function applyAll(){
+
+    var fn = arguments[0];
+    var rest = [].slice.call(arguments);
+    rest.splice(0,1);
+
+    var result = fn.apply(this,rest);
+    return result;
+}
+function sum(){
+    var res = 0;
+    for(var i = 0;i<arguments.length;i++){
+        res+=arguments[i]
+    }
+    return res;
+}
+
+function mul(){
+    var res = arguments[0];
+    for(var i = 1;i<arguments.length;i++){
+        res*=arguments[i]
+    }
+    return res;
+}
+
+    alert(applyAll(Math.max,2,-2,3));
+    alert(applyAll(Math.min,2,-2,3));
+    alert(applyAll(sum,1,2,3));
+    alert(applyAll(mul,1,2,3));
+    */
+
+
+
+</script>
+</body>
+</html>

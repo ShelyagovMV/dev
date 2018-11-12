@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Functional OOP</title>
+   <script defer src="script.js"></script>
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+<h1>OOP Function Prototype</h1>
+<p>algorithm solid </p>
+
+
+<script>
+    function Machine(power) {
+        this._power = power;
+        this._enabled = false;
+        var self = this;
+        this.enable = function() {
+            self._enabled = true;
+        };
+        this.disable = function() {
+            self._enabled = false;
+        };
+    }
+    function Fridge(power){
+        Machine.apply(this, arguments);
+        var food = [];
+
+        var machineDisable = this.disable;
+        this.disable = function(){
+            if(food.length > 0){
+                console.error('Fridge is not empty!');
+            }
+            else{
+                machineDisable();
+            }
+        };
+        this.addFood = function(){
+            if(!this._enabled){
+                console.error("Холодильник выключен!");
+            }
+            else if(food.length + arguments.length >= this._power/100){
+                console.error("Холодильник не резиновый!");
+            }
+            else{
+                for(var i=0; i < arguments.length; i++){
+                    food.push(arguments[i]);
+                }
+            }
+
+        };
+        this.removeFood = function(item){
+            var indexItem = food.indexOf(item);
+            if(indexItem != -1){
+                return food.splice(indexItem, 1);
+            }
+        }
+        this.getFood = function(){
+            return food.slice();
+        }
+        this.filterFood = function(func){
+            var dietFood = [];
+            for(var i = 0; i < food.length; i++){
+                if (func(food[i]) == true){
+                    dietFood.push(food[i]);
+                }
+            }
+            return dietFood;
+        }
+    }
+
+    var fridge = new Fridge(500);
+    fridge.enable();
+
+    fridge.addFood({
+        title: "котлета",
+        calories: 100
+    });
+    fridge.addFood({
+        title: "сок",
+        calories: 30
+    });
+    fridge.addFood({
+        title: "зелень",
+        calories: 10
+    });
+    fridge.addFood({
+        title: "варенье",
+        calories: 150
+    });
+    fridge.removeFood("без эффекта"); // без эффекта
+    alert( fridge.getFood().length ); // 4
+    var dietItems = fridge.filterFood(function(item) {
+        return item.calories < 50;
+    });
+    dietItems.forEach(function(item) {
+        alert( item.title ); // сок, зелень
+        fridge.removeFood(item);
+    });
+    alert( fridge.getFood().length ); // 2
+
+    fridge.disable(); // ошибка, в холодильнике есть еда*/
+    /*var fridge = new Fridge(500);
+    fridge.enable();
+    fridge.addFood('potato1');
+    fridge.addFood('potato2', 'potato3');
+    fridge.addFood('tomato1');
+    console.log(fridge.getFood());
+    console.log(fridge.filterFood('tomato1'));*/
+    /*Добавьте в холодильник методы:
+    Публичный метод filterFood(func), который возвращает всю еду, для которой func(item) == true
+    Публичный метод removeFood(item), который удаляет еду item из холодильника.*/
+
+    /* Переопределите метод disable холодильника, чтобы при наличии в нём еды он выдавал ошибку.*/
+</script>
+
+
+
+</body>
+</html>

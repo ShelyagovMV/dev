@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Proto OOP</title>
+   <script defer src="script.js"></script>
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+<h1>OOP Function Prototype</h1>
+<p>algorithm solid </p>
+
+
+<script>
+
+
+    //создать класс Worker в фун и прототип
+    //name,rate,hoursWoreked,overTimeRate=2*rate
+    //overTime > 160 hours
+    //countarySalary = function(hourseWorked)
+    //get name,set name,get rate,set rate
+    /* function Worker(name,rate,hours) {
+        this.name = name;
+        this.rate = rate;
+        this.hours = hours;
+        this.overTime = this.hours - 160;
+    }
+    Worker.prototype.countSalary = function() {
+        this.overTimeSalary = this.overTime * 2 *this.rate;
+        this.salary = this.overTimeSalary + this.rate * this.hours
+     }
+var worker = new Worker("Vasya",100,150);
+    worker.countSalary();
+console.log(worker.salary);*/
+    function Worker() {
+        var self = this;
+        var workerName,workerRate,workerHours,workerOverTime;
+        self.setName = function (name) {
+            if (typeof (name) == 'string') {
+                workerName = name;
+            }
+        }
+        self.setRate = function (rate) {
+            if (typeof (rate)=='number'){
+                workerRate = +rate;}
+        }
+        self.setHours = function (hours) {
+            if (typeof (hours)=='number')
+                workerHours = +hours;
+        }
+        self.getName = function () {
+            return workerName;
+        }
+        self.getOverTime = function(){
+            overTime(workerHours);
+            return workerOverTime;
+        }
+        self.getRate = function () {
+            return workerRate;
+        }
+        self.getHours = function(){
+            return workerHours;
+        }
+        function overTime(workerHours){
+            workerOverTime = workerHours - 160;
+        }
+        self.getCoutSalary = function () {
+            overTime(workerHours);
+            if (workerOverTime > 0){
+                return (workerOverTime*2*workerRate) + 160 * workerRate;
+            }else {
+                return workerRate * workerHours;
+            }
+        }
+    }
+    var worker1 = new Worker();
+    worker1.setName('Vasya');
+    worker1.setHours(200);
+    worker1.setRate(30);
+    console.log(worker1.getOverTime());
+    console.log(worker1.getCoutSalary());
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype OOP</title>
+   <script defer src="script.js"></script>
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+<h1>OOP Function Prototype</h1>
+<p>algorithm solid </p>
+
+
+<script>
+    /* var head = {
+        glasses: 1
+    };
+     var table = {
+        __proto__:head,
+        pen: 3
+    };
+     var bed = {
+        __proto__:table,
+        sheet: 1,
+        pillow: 2
+    };
+     var pockets = {
+        __proto__:bed,
+        money: 2000
+    };
+     alert(pockets.glasses);
+    alert(table.money);
+    function Rabbit(name) {
+       this.name = name;
+   }
+   Rabbit.prototype.sayHi = function() {
+       alert( this.name );
+   };
+    var rabbit = new Rabbit("Rabbit");
+    rabbit.sayHi();
+   Rabbit.prototype.sayHi();
+   Object.getPrototypeOf(rabbit).sayHi();
+   rabbit.__proto__.sayHi();*/
+    /*
+      function CoffeeMachine(power) {
+           this._waterAmount = 0;
+           this._power = power;
+           this._WATER_HEAT_CAPACITY = 4200;
+           CoffeeMachine.prototype.run = function () {
+              setTimeout(function() {
+                  alert( 'Кофе готов!' );
+              }, this._waterAmount * this._WATER_HEAT_CAPACITY * 80 / this._power);
+          }
+           CoffeeMachine.prototype.setWaterAmount = function (amount) {
+              waterAmount = amount;
+          }
+       }
+       var coffeeMachine = new CoffeeMachine(10000);
+      coffeeMachine.setWaterAmount(50);
+      coffeeMachine.run();
+      function Hamster() {
+          this.food = [];
+      }
+       //Hamster.prototype.food = []; // пустой "живот"
+       Hamster.prototype.found = function(something) {
+          this.food.push(something);
+      };
+       // Создаём двух хомяков и кормим первого
+      var speedy = new Hamster();
+      var lazy = new Hamster();
+       speedy.found("яблоко");
+      speedy.found("орех");
+       alert( speedy.food.length ); // 2
+      alert( lazy.food.length ); // 2 (!??)*/
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+   <script defer src="script.js"></script>
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+<h1>Welcome DOM,document,window shadow dom</h1>
+<p>колекцию можно изменчть динамичсески а ущлін ельзя туда записал ивсе изменять нельзя</p>
+
+<!--<div id="first">-->
+    <!--<div class="box"> i am box</div>-->
+    <!--<button onclick="sayHello()">click me</button>-->
+    <!--<section class="about">section1</section>-->
+    <!--<section class="about">section2</section>-->
+<!--</div>-->
+
+<header>
+    <div>logo</div>
+
+    <div id="menubtn">
+        <span></span>
+        <span></span>
+            <span></span>
+    </div>
+    <nav>
+        <a href="#">item1</a>
+        <a href="#">item1</a>
+        <a href="#">item1</a>
+        <a href="#">item1</a>
+        <a href="#">item1</a>
+    </nav>
+</header>
+
+
+<script>
+   //  function Worker(name = "sworker",rate = 10){
+   //      var rate = rate;
+   //      var name = name;
+   //
+   //      this.getRate = function(){
+   //          return rate;
+   //      }
+   //
+   //      this.setRate = function(val){
+   //          rate = val;
+   //      }
+   //      this.getName = function(){
+   //          return name;
+   //      }
+   //
+   //      this.setName = function(val){
+   //          name = val;
+   //      }
+   //
+   //      this.getCountSalary = function(hoursWorked){
+   //          var salary ;
+   //          if(typeof(hoursWorked) == 'number'){
+   //              if(hoursWorked > 160){
+   //               salary = (hoursWorked - 160) * 2 * rate + (160);
+   //              }
+   //           else {
+   //               salary = hoursWorked * rate;
+   //           }
+   //              return salary;
+   //          }
+   //      }
+   //  }
+   //  var admin = new Worker("Misha", 12);
+   //
+   //  console.log(admin.getName());
+   //  console.log(admin.getRate());
+   //
+   // admin.setName("Petr");
+   // admin.setRate(12);
+   //
+   //  console.log(admin.getName());
+   //  console.log(admin.getRate());
+   //
+   //  console.log(admin.getCountSalary(215));
+
+   //  function Worker(name = "sworker",rate = 10){
+   //      this.rate = rate;
+   //      this.name = name;
+   //  }
+   //
+   // Worker.prototype.getRate = function(){
+   //          return this.rate;
+   // }
+   //
+   // Worker.prototype.setRate = function(val){
+   //     this.rate = val;
+   // }
+   //
+   // Worker.prototype.getName = function(){
+   //          return this.name;
+   // }
+   //
+   // Worker.prototype.setName = function(val){
+   //     this.name = val;
+   // }
+   //
+   // Worker.prototype.getCountSalary = function(hoursWorked){
+   //          var salary ;
+   //          if(typeof(hoursWorked) == 'number'){
+   //              if(hoursWorked > 160){
+   //               salary = (hoursWorked - 160) * 2 * this.rate + (160);
+   //              }
+   //              else {
+   //               salary = hoursWorked * this.rate;
+   //              }
+   //              return salary;
+   //          }
+   // }
+   //
+   //  var admin = new Worker("Misha", 12);
+   //
+   //  console.log(admin.getName());
+   //  console.log(admin.getRate());
+   //
+   //  admin.setName("Petr");
+   //  admin.setRate(12);
+   //
+   //  console.log(admin.getName());
+   //  console.log(admin.getRate());
+   //
+   //  console.log(admin.getCountSalary(215));
+
+   // var first = document.getElementById('first');
+   // var box = document.getElementsByClassName('box')[0];
+   // var btn = document.getElementsByTagName('button')[0];
+   // var section = document.querySelector('section');
+   // var sections = document.querySelectorAll('.about')[1];
+   //
+   // function sayHello(){
+   //     alert("hello");
+   // }
+   //
+   // first.onclick = function(){
+   //     first.style.color = "red";
+   // }
+   //
+   // first.onclick = sayHello;
+   //
+   // document.addEventListener('mouseover',function(event){
+   //     event.target.style.color = "red";
+   // });
+   //
+   //
+   // document.addEventListener('mouseout',function(event){
+   //     event.target.style.color = "yellow";
+   // });
+   //
+   // var arr = ['black','grey','blue'];
+   // var count = 0;
+   // function recolor(){
+   //     btn.style.backgroundColor =arr[count];
+   //     count++;
+   //
+   // }
+   //
+   // section.addEventListener("click",recolor);
+   // setTimeout(function(){
+   //     section.removeEventListener('click',recolor);
+   // },100000);
+   var menu = document.getElementById("menubtn");
+   var header = document.querySelector("header");
+   menu.onclick = function(){
+       header.classList.toggle('opened');
+   }
+</script>
+
+
+
+</body>
+</html>

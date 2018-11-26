@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>test</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+<style>
+	i{
+		padding: 0 0 0 20px;
+	}
+	.hidden{
+		display: none;
+	}
+</style>
+</head>
+<body>
+	<h1>To Do List</h1>
+	<form>
+		<input id="task" type="text" placeholder="Type your task">
+		<input id="savebtn" type="button" value="save">
+	</form>
+	<h2>Any tasks yet. Type your first above.</h2>
+	<ul id="todolist"></ul>
+
+<script>
+	// switch h2 and ul +
+	// save task  +
+	// edit task  +
+	// delete task  +
+	//* save and read from local storage
+	//* adding subtasks
+	//** adding priority
+	//** filtering by name/priority/number of subtasks
+
+	//<i class="far fa-trash-alt"></i>
+	//<i class="far fa-edit"></i>
+
+	var task = document.getElementById('task');
+	var savebtn = document.getElementById('savebtn');
+	var todolist = document.getElementById('todolist');
+	var hdng = document.querySelector('h2');
+	var todos = [];
+	var form = document.querySelector('form');
+	var LS_NAME = 'ToDoList';
+
+	form.addEventListener('submit', function(event){
+		event.preventDefault();
+		saveTask();
+	});
+
+	var storage = localStorage;
+
+	function checkTodos(){
+		if(!storage.getItem(LS_NAME)){
+			storage.setItem(LS_NAME, todos);
+		}
+		else{
+			todos = storage.getItem(LS_NAME).split(',');
+			if(todos.length > 0 && todos[0].length >0){
+				todolist.style.display = 'block';
+				hdng.style.display = 'none';
+				todos.forEach(function(item){
+					addTask(item);
+				});
+			}
+			else{
+				todolist.style.display = 'none';
+				hdng.style.display = 'block';
+			}
+		}	
+	}
+	checkTodos();
+
+	savebtn.onclick = function(){
+		var todo = task.value;
+		addTask(todo);
+		todos.push(todo);
+		saveToLS();
+		if(todos.length >= 1){
+			todolist.style.display = 'block';
+			hdng.style.display = 'none';
+		}
+	};
+
+	function addTask(text){
+		if(text.length > 0){
+			var li = document.createElement('li');
+			var span = document.createElement('span');
+			span.innerText = text;
+			li.appendChild(span);
+			li.appendChild(createEl('input', ['hidden']));
+			li.appendChild(createEl('i', ['far', 'fa-edit']));
+			li.appendChild(createEl('i', ['far', 'fa-trash-alt']));
+			todolist.appendChild(li);
+			task.value = '';
+		}
+		
+	}
+
+	function createEl(tag, classes){
+		var element = document.createElement(tag);
+		for(var i = 0; i < classes.length; i++){
+			element.classList.add(classes[i]);
+		}
+		return element;
+	}
+
+	function deleteTask(element){
+		var text = element.querySelector('span').innerText;
+		var index = todos.indexOf(text);
+		todos.splice(index,1);
+		element.remove();
+		saveToLS();
+		if(todos.length == 0){
+			todolist.style.display = 'none';
+			hdng.style.display = 'block';
+		}
+	}
+
+	function editTask(element){
+		var span = element.querySelector('span');
+		var oldText = span.innerText;
+		var index = todos.indexOf(oldText);
+		var input = element.querySelector('input');
+		input.value = oldText;
+		span.classList.toggle('hidden');
+		input.classList.toggle('hidden');
+
+		input.addEventListener('keyup', function(event){
+			if(event.keyCode == 13){
+				var newtext = input.value;
+				todos.splice(index,1, newtext);
+				span.innerText = newtext;
+				span.classList.toggle('hidden');
+				input.classList.toggle('hidden');
+				input.value = '';
+				saveToLS();
+			}
+		});
+	}
+
+	todolist.addEventListener('click', function(event){
+		if (event.target.classList.contains('fa-trash-alt')) {
+			deleteTask(event.target.parentNode);
+		}
+		else if(event.target.classList.contains('fa-edit')){
+			editTask(event.target.parentNode);
+		}
+	});
+
+
+	function saveToLS(){
+		storage.setItem(LS_NAME, todos);
+	}
+
+
+
+</script>
+
+</body> 
+</html>

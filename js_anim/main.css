@@ -1,0 +1,168 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+	/*background-color: #000;*/
+}
+
+.btn{
+	margin: 50px auto;
+	width: 130px;
+	text-align: center;
+	height: 30px;
+	font: 18px/30px sans-serif;
+	text-transform: uppercase;
+	position: relative;
+	background-color: lightblue;
+	color: darkblue;
+	border-radius: 3px;
+}
+
+.btn:before{
+	content: '';
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: -2px;
+	left: 0;
+	border: 3px solid lightblue;
+	opacity: 0.5;
+	transform: scale(0.7);
+	border-radius: 5px;
+	/*transition-property: transform;
+	transition-duration: 0.3s;
+	transition-timing-function: ease-in;
+	transition-delay: 0.1s;*/
+	transition: transform 0.3s ease-in, 
+				box-shadow 0.2s ease-in 0.25s;
+}
+
+.btn:hover:before{
+	transform: scale(1.5);
+	box-shadow: 0 0 10px 2px lightblue;
+}
+
+.holder{
+	margin: 50px auto;
+	width: 10px;
+}
+
+.ball{
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	margin-bottom: 10px;
+	/*animation: left 1s ease-in-out infinite;*/
+}
+
+
+@keyframes left {
+	from, to{
+		transform: translateX(-50px);	
+	}
+	50%{
+		transform: translateX(50px);
+	}
+}
+
+@keyframes right {
+	0%, 100%{
+		transform: translateX(50px);	
+	}
+	50%{
+		transform: translateX(-50px);
+	}
+}
+
+.cat{
+	width: 400px;
+	height: 200px;
+	background: url('cat_sprite.png') 1200px -1000px;
+	background-size: 1600px 2591px;
+	animation: catWalk 1s steps(12) 3,
+			   catWalktoRun 1s steps(12) 3s,
+			   catRun 0.6s steps(13) 4s 3,
+			   catSit 0.6s steps(6) 5.4s;
+}
+
+@keyframes catWalk {
+	0%{
+		background-position: 0 0;
+	}
+	100%{
+		background-position: 0 -2391px;
+	}
+}
+
+@keyframes catWalktoRun {
+	0%{
+		background-position: 800px 0;
+	}
+	100%{
+		background-position: 800px -2391px;
+	}
+}
+
+@keyframes catRun {
+	0%{
+		background-position: 400px 0;
+	}
+	100%{
+		background-position: 400px -2591px;
+	}
+}
+
+@keyframes catSit {
+	0%{
+		background-position: 1200px 0;
+	}
+	100%{
+		background-position: 1200px -1200px;
+	}
+}
+
+.progressbar{
+	width: 200px;
+	position: relative;
+}
+
+.count{
+	position: absolute;
+	top: 60px;
+	left: 20px;
+	width: 100%;
+	text-align: center;
+	z-index: 2;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.progressbar svg{
+	stroke-width: 12px;
+	stroke: limegreen;
+	stroke-dasharray: 251;
+	stroke-dashoffset: 0;
+	transform: rotate(90deg);
+}
+
+.wrapper{
+	width: 500px;
+	margin: 50px auto;
+}
+
+.box{
+	width: 100px;
+	height: 100px;
+	border-radius: 5px;
+	line-height: 100px;
+	text-align: center;
+	margin: 20px;
+	background-color: salmon;
+	display: inline-block;
+	font-size: 30px;
+	color: tomato;
+}

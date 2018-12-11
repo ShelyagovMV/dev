@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>First Lesson</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+
+	<div class="btn">Hover me!</div>
+
+	<div class="holder">
+		<div class="ball"></div>
+		<div class="ball"></div>
+		<div class="ball"></div>
+		<div class="ball"></div>
+		<div class="ball"></div>
+		<div class="ball"></div>
+		<div class="ball"></div>
+		<div class="ball"></div>
+	</div>
+
+
+	<div class="progressbar">
+		<div class="count">10</div>
+		<svg viewbox="0 0 120 120">
+			<path fill="none" d="M10,50a40,40 0 1,0 80,0a40,40 0 1,0 -80,0"/>
+		</svg>
+	</div>
+	
+	<div class="cat"></div>
+
+	<div class="wrapper">
+		<div class="box">1</div>
+		<div class="box">2</div>
+		<div class="box">3</div>
+		<div class="box">4</div>
+		<div class="box">5</div>
+		<div class="box">6</div>
+	</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+
+<script>
+
+	var boxes = document.querySelectorAll('.box');
+
+	TweenMax.set(boxes, {opacity: 0, x: -200, y: -200});
+
+	var boxesAnimated = false;
+	var boxesTop = document.querySelector('.wrapper').offsetTop - 500;
+
+	document.addEventListener('scroll', function(){
+		if(document.documentElement.scrollTop > boxesTop && !boxesAnimated){
+			boxesAnimated = true;
+			animateBoxes();
+		}
+	});
+
+	function animateBoxes(){
+		var anim = TweenMax.staggerTo(boxes, 1, {opacity: 1, x: 0, y: 0, repeat:2, yoyo:true}, 0.3);
+
+	}
+
+
+	var progressbar = document.querySelector('.progressbar svg');
+	var counter = document.querySelector('.count');
+	var duration = 10000;
+	var dasharray = 251;
+	var offset = 0;
+	var currentCount = 10;
+
+	function animateCounter(){
+		var interval = setInterval(function(){
+			if(currentCount > 0){
+				currentCount--;
+				counter.innerText = currentCount;
+			}
+			else{
+				clearInterval(interval);
+			}
+		},1000);
+	}
+
+	function animateProgressbar(){
+		var interval = setInterval(function(){
+			if(dasharray > 0){
+				dasharray--;
+				offset++;
+				progressbar.style.strokeDashoffset = offset;
+			}
+			else{
+				clearInterval(interval);
+			}
+		},duration/dasharray);
+	}
+
+animateProgressbar();
+animateCounter();
+
+	var balls = document.querySelectorAll('.ball');
+
+
+	for(var i = 0; i < balls.length; i++){
+		var red = Math.random() *(255 - 0);
+		var green = Math.random() *(255 - 0);
+		var blue = Math.random() *(255 - 0);
+		balls[i].style.backgroundColor = 'rgb('+ red + ',' + green  + ',' + blue + ')';
+		var animationName = (i%2 == 0 ) ? 'left': 'right';
+		balls[i].style.animation = animationName + ' 1.' + i + 's ease-in-out infinite';
+	}
+
+</script>
+
+</body>
+</html>
